@@ -7,13 +7,13 @@ class Tree():
 
     def find(self,chave):
         atual = self.raiz
-        while(chave != self.raiz.obj.ataque):
+        while(chave != self.atual.obj.xp):
             if atua is None:
                 return None
-            elif chave < self.raiz.obj.ataque:
-                atual = self.raiz.getEsquerda()
+            elif chave < self.atual.obj.xp:
+                atual = self.atual.getEsquerda()
             else:
-                atual = self.raiz.getDireita()
+                atual = self.atual.getDireita()
         return atual
 
 
@@ -37,13 +37,7 @@ class Tree():
                         return
 
     def delete(self,chave):
-        atual = self.raiz
-        while(chave != atual.obj.ataque):
-            pai = atual
-            if chave < atual.obj.ataque:
-                atual = atual.getEsquerda()
-                if atual is None:
-
+        pass
 
     def inOrder(self,raiz):# visita os nos em ordem crescente
         if raiz is not None:
@@ -65,3 +59,17 @@ class Tree():
             pai = atual
             atual = atual.getDireita()
         return pai
+
+    def sucessor(self,delNode):
+        sucessorPai = delNode
+        sucessor = delNode
+        atual = delNode.getDireita()
+        while( atual is not None):
+            sucessorPai = sucessor
+            sucessor = atual
+            atual = atual.getEsquerda()
+            if sucessor is not delNode.getDireita():
+                sucessorPai.setEsquerda(sucessorPai.getDireita())
+                sucessor.setDireita(delNode.getDireita())
+        
+        return sucessor
