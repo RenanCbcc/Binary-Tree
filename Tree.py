@@ -36,7 +36,7 @@ class Tree():
                         pai.setDireita(no)
                         return
 
-    def delete(self, chave):
+        def delete(self, chave):
         atual = self.raiz
         isleftChild = True
         # se node for encontrado, sair do laço com o node a ser deletado
@@ -52,11 +52,11 @@ class Tree():
             if atual is None:
                 return False # node não encontrado
         #fim do while
-        
-        ################################    
+
+        ################################
         # Caso 1: o Node não tem filhos#
         ################################
-        
+
         if atual.efFolha():
 
             if atual is self.raiz:
@@ -65,11 +65,11 @@ class Tree():
                 pai.setEsquerda(None)
             else:
                 pai.setDireita(None)
-        
-        ############################################        
+
+        ############################################
         #Caso 2: o Node a ser deletado tem um filho#
         ############################################
-        
+
         # se sem filho a direita, subustituir por subarvore da esquerda
         elif atual.getDireita() is None:
             if atual is self.raiz:
@@ -87,11 +87,35 @@ class Tree():
                 pai.setEsquerda(atual.getDireita())
             else:
                 pai.setDireita(atual.getDireita())
+
+        ###############################################
+        # Caso 3: o Node a ser deletado tem dois filho#
+        ###############################################
+
+        #para deletar um Node com dois filhos substitua o Node pelo seu sucessor se suscessor ehFolha
+        # função sucessor() faz isso
+        else:
+            sucessor = self.sucessor(atual)
+            # conecta pai de atual ao invéz de sucessor
+            if atual is self.raiz:
+                root = sucessor
+            elif isleftChild:
+                pai.setEsquerda(sucessor)
+            else:
+                pai.setDireita(sucessor)
+                
+            #conecta sucessor ao filho da esquerda do atual
+            sucessor.setEsquerda(atual.getEsquerda())
+        return True #Fim delete()
         
-        #############################################
-        # Caso 3: o Node a ser deletado tem um filho#
-        #############################################
-        
+
+    def qtdNodes(self,no):
+        if no is None:
+            return 0
+        qtdEsquerda = self.qtdNodes(no.getEsquerda())
+        qtdDireita = self.qtdNodes(no.getDireita())
+        return qtdDireita + qtdEsquerda +1
+    
 
     def inOrder(self,raiz):# visita os nos em ordem crescente
         if raiz is not None:
