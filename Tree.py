@@ -36,10 +36,9 @@ class Tree():
                         pai.setDireita(no)
                         return
 
-        def delete(self, chave):
+    def delete(self, chave):
         atual = self.raiz
         isleftChild = True
-        "Caso 1: o Node não tem filhos"
         # se node for encontrado, sair do laço com o node a ser deletado
         while(atual.obj.getXp() is not chave ):
             pai = atual
@@ -52,19 +51,47 @@ class Tree():
 
             if atual is None:
                 return False # node não encontrado
-
         #fim do while
-        #se  Node atual sem filhos, delete-o
+        
+        ################################    
+        # Caso 1: o Node não tem filhos#
+        ################################
+        
         if atual.efFolha():
-            if atual == self.raiz:
+
+            if atual is self.raiz:
                 atual = None # árvore está vazia
             elif isleftChild:
                 pai.setEsquerda(None)
             else:
                 pai.setDireita(None)
+        
+        ############################################        
+        #Caso 2: o Node a ser deletado tem um filho#
+        ############################################
+        
+        # se sem filho a direita, subustituir por subarvore da esquerda
+        elif atual.getDireita() is None:
+            if atual is self.raiz:
+                self.raiz = atual.getEsquerda()
+            elif isleftChild: # filho a esquerda de Node pai
+                pai.setEsquerda(atual.getEsquerda())
+            else:
+                pai.setDireita(atual.getEsquerda())
 
-        "Caso 2: o Node a ser deletado tem um filho"
-    
+        # se sem filho a esquerda, subustituir por subarvore da direita
+        elif atual.getEsquerda() is None:
+            if atual is self.raiz:
+                self.raiz = atual.getDireita()
+            elif isleftChild: # filho a esquerda de Node pai
+                pai.setEsquerda(atual.getDireita())
+            else:
+                pai.setDireita(atual.getDireita())
+        
+        #############################################
+        # Caso 3: o Node a ser deletado tem um filho#
+        #############################################
+        
 
     def inOrder(self,raiz):# visita os nos em ordem crescente
         if raiz is not None:
