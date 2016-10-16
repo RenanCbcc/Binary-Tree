@@ -7,25 +7,25 @@ class Tree():
 
     def find(self,chave):
         atual = self.raiz
-        while(chave != self.atual.obj.xp):
+        while(chave != self.atual.obj.getXp()):
             if atua is None:
                 return None
-            elif chave < self.atual.obj.xp:
+            elif chave < self.atual.obj.getXp():
                 atual = self.atual.getEsquerda()
             else:
                 atual = self.atual.getDireita()
         return atual
 
 
-    def insert(self,digimon):
-        no = Node(digimon)
+    def insert(self,digimon,Xp):
+        no = Node(Digimon(digimon,Xp))
         if self.raiz is None:
             self.raiz = no
         else:
             atual = self.raiz
             while(True):
                 pai = atual # pai sempre aponta para um nível acima
-                if no.obj.ataque < pai.obj.ataque: # vai pra esquerda?
+                if no.obj < atual.obj : # vai pra esquerda?
                     atual = atual.getEsquerda()
                     if atual is None:
                         pai.setEsquerda(no) #insira na esquerda
@@ -39,10 +39,11 @@ class Tree():
     def delete(self,chave):
         pass
 
+
     def inOrder(self,raiz):# visita os nos em ordem crescente
         if raiz is not None:
             self.inOrder(raiz.getEsquerda())
-            print(raiz.obj.ataque,raiz.obj.nome)
+            print(raiz.obj.xp,raiz.obj.nome)
             self.inOrder(raiz.getDireita())
 
     def minimun(self):
@@ -50,7 +51,7 @@ class Tree():
         while(atual is not None):
             pai = atual
             atual = atual.getEsquerda()
-        return pai
+        print( pai )
 
 
     def maximun(self):
@@ -58,7 +59,7 @@ class Tree():
         while (atual is not None):
             pai = atual
             atual = atual.getDireita()
-        return pai
+        print( pai )
 
     def sucessor(self,delNode):
         sucessorPai = delNode
@@ -71,5 +72,19 @@ class Tree():
             if sucessor is not delNode.getDireita():
                 sucessorPai.setEsquerda(sucessorPai.getDireita())
                 sucessor.setDireita(delNode.getDireita())
-        
+
         return sucessor
+
+#----------------------------------------------------------------------#
+tree = Tree()
+tree.insert('Tentomon',8)
+tree.insert('Agumon',10)
+tree.insert('Greymon',22)
+tree.insert('Metal Greymon',32)
+tree.insert('War Greymon',55)
+tree.insert('Kabuterimon',18)
+tree.insert('Atlur Kabuterimon',32)
+tree.insert('Gabumon',9)
+tree.insert('Garurumon',20)
+tree.insert('Were Garurumon',31)
+tree.insert('Metal Garurumon',50)
