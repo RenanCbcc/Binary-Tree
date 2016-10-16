@@ -36,9 +36,35 @@ class Tree():
                         pai.setDireita(no)
                         return
 
-    def delete(self,chave):
-        pass
+        def delete(self, chave):
+        atual = self.raiz
+        isleftChild = True
+        "Caso 1: o Node não tem filhos"
+        # se node for encontrado, sair do laço com o node a ser deletado
+        while(atual.obj.getXp() is not chave ):
+            pai = atual
+            if chave < atual.obj.getXp(): # vai pra esquerda?
+                isleftChild = True
+                atual = atual.getEsquerda()
+            else:
+                isleftChild = False
+                atual = atual.getDireita()
 
+            if atual is None:
+                return False # node não encontrado
+
+        #fim do while
+        #se  Node atual sem filhos, delete-o
+        if atual.efFolha():
+            if atual == self.raiz:
+                atual = None # árvore está vazia
+            elif isleftChild:
+                pai.setEsquerda(None)
+            else:
+                pai.setDireita(None)
+
+        "Caso 2: o Node a ser deletado tem um filho"
+    
 
     def inOrder(self,raiz):# visita os nos em ordem crescente
         if raiz is not None:
