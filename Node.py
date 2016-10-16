@@ -1,7 +1,7 @@
-
+#classe Node
 class Node():
-    def __init__(self,Digimom = None):
-        self.obj = Digimon
+    def __init__(self,digimon):
+        self.obj = digimon
         self.esquerda = None  #left child
         self.direita = None     #right child
 
@@ -22,4 +22,5 @@ class Node():
             return True
         else:
             return False
-    
+    def __str__(self):
+        return ("%i %s"%(self.obj.xp,self.obj.nome))
