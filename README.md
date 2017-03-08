@@ -1,2 +1,6 @@
 # Binary-Tree
-Árvore Binária implementa em python
+##  :evergreen_tree:Árvore Binária implementa em python
+* Inserir nó
+* Excuir nó
+* Imprimir nós
+* Ordenar nós
