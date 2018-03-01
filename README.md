@@ -38,11 +38,11 @@ common.
 ![GitHub Logo](doc/Figure_3.PNG)
 
 ### The `delete()` Method
-![GitHub Logo](doc/Figure_4.PNG)
+![GitHub Logo](doc/Figure_5.PNG)
 
 
 ### The `inOrder()` Method
-![GitHub Logo](doc/Figure_5.PNG)
+![GitHub Logo](doc/Figure_4.PNG)
 
 ### Linked-List Efficiency
 Most operations with trees involve descending the tree from level to
@@ -58,22 +58,23 @@ how long it takes to carry out these operations by knowing how many levels there
 are. Assuming a full tree, table below shows how many levels are necessary to hold a
 given number of nodes.
 
-|_.Number of Nodes| _.Number of Levels
-|1 |1|
-|3 |2|
-|7 |3|
-|15 |4|
-|31 |5|
-|… |…|
-|1,023 |10|
-|… |…|
-|32,767 |15|
-|… |…|
-|1,048,575 |20|
-|… |…|
-|33,554,432 |25|
-|… |…|
-|1,073,741,824 |30|
+| Number of Nodes| Number of Levels|
+| --- | --- |
+| 1 | 1 |
+| 3 | 2 |
+| 7 | 3 |
+| 15 | 4 |
+| 31 | 5 |
+| … |…|
+| 1,023 | 10 |
+| … | … |
+| 32,767 | 15 |
+| … | … |
+| 1,048,575 | 20 |
+| … | … |
+| 33,554,432 | 25 |
+| … | … |
+| 1,073,741,824 | 30 |
 
 In that
 case, the number of comparisons for a binary search was approximately equal to the
@@ -83,10 +84,10 @@ can say that N is 1 less than 2 raised to the power L, or
 N = 2L – 1
 
 Adding 1 to both sides of the equation, we have
-N + 1 = 2L
+**N + 1 = 2L**
 
 This is equivalent to
-L = log2(N + 1)
+**L = log2(N + 1)**
 
 Thus, the time needed to carry out the common tree operations is proportional to
-the base 2 log of N. In Big O notation we say such operations take O(logN) time.
+the base 2 log of N. In Big O notation we say such operations take **O(logN)** time.
