@@ -7,7 +7,7 @@ list. A tree consists of nodes connected by edges. Figure below shows a tree. In
 of a tree the nodes are represented as circles, and the
 edges as lines connecting the circles. 
 
-### Links in a list.
+### A general (non-binary) tree.
 ![GitHub Logo](doc/Figure_1.PNG)
 
 In computer programs, nodes often represent such entities as people, car parts,
