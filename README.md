@@ -76,18 +76,22 @@ given number of nodes.
 | … | … |
 | 1,073,741,824 | 30 |
 
-In that
+Thsi number is very much like the ordered array. In that
 case, the number of comparisons for a binary search was approximately equal to the
 base 2 logarithm of the number of cells in the array. Here, if we call the number of
 nodes in the first column N, and the number of levels in the second column L, we
 can say that N is 1 less than 2 raised to the power L, or 
-N = 2L – 1
+N = 2^L – 1
 
 Adding 1 to both sides of the equation, we have
-**N + 1 = 2L**
+**N + 1 = 2^L**
 
 This is equivalent to
 **L = log2(N + 1)**
 
 Thus, the time needed to carry out the common tree operations is proportional to
 the base 2 log of N. In Big O notation we say such operations take **O(logN)** time.
+In an ordered array you can find an item equally quickly, but inserting an item
+requires, on the average, moving 500,000 items. Inserting an item in a tree with
+1,000,000 items requires 20 or fewer comparisons, plus a small amount of time to
+connect the item.

@@ -17,10 +17,16 @@ class Digimon:
         return self.__experience
 
     def __str__(self):
-        return " Name  : %s \n Attack: %i \n Defense: %i " % (self.__name, self.__attack, self.__defense)
+        return " [Name  : %s Attack: %i Defense: %i ]" % (self.__name, self.__attack, self.__defense)
 
-    def __lt__(self, dig):
-        return self.get_xp() < dig.get_xp()
+    def __lt__(self, other): # less than.
+        return self.get_xp() < other.get_xp()
 
-    def __eq__(self, dig):
-        return self.get_xp() == dig.get_xp()
+    def __gt__(self, other): # greater than.
+        return self.get_xp() > other.get_xp()
+
+    def __eq__(self, other): # compare all attributes.
+        return self.__dict__ == other.__dict__
+
+
+

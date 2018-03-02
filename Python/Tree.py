@@ -1,21 +1,24 @@
 from Digimon import Digimon
 from Node import Node
+from Stack import Stack
 
 
 class Tree:
     def __init__(self):
         self.root = None
 
+    # ----------------------------------------------------------------------#
     def find(self, key):
         current = self.root
-        while key != self.current.get_object.get_xp():
+        while key != self.current.get_object():
             if current is None:
                 return None
-            elif key < self.current.get_object().get_xp():
+            elif key < self.current.get_object():
                 current = self.current.get_left()
             else:
                 current = self.current.get_right()
         return current
+
 
     def insert(self, name, xp):
         node = Node(Digimon(name, xp))
